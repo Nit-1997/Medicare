@@ -44,18 +44,13 @@ const FormSignin = (props) => {
         if (email && password) {
             try {
                 await dispatch(loginThunk({ email, password }));
-                if (currentUser) {
-                    dispatch(setPage(-2));
-                    navigate("/profile");
-                } else {
-                    messageModalHandleOpen(true);
-                    setMessageModalContent(
-                        "Login failed, please try again! If you don't have an account, register first."
-                    );
-                }
+                dispatch(setPage(-2));
+                navigate("/profile");
             } catch (e) {
                 messageModalHandleOpen(true);
-                setMessageModalContent(e.message);
+                setMessageModalContent(
+                    "Login failed, please try again! If you don't have an account, register first."
+                );
             }
         }
     };
