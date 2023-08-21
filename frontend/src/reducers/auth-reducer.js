@@ -18,11 +18,17 @@ const authSlice = createSlice({
             state.currentUser = payload;
         },
         [registerThunk.fulfilled]: (state, { payload }) => {
+            if(payload === undefined){
+                throw new Error("User not signed up")
+            }
             state.currentUser = payload;
         },
         [loginThunk.fulfilled]: (state, { payload }) => {
+            if(payload === undefined){
+                throw new Error("User not signed in")
+            }
             state.currentUser = payload;
-        },
+        }
     },
 });
 export default authSlice.reducer;

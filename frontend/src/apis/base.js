@@ -9,6 +9,7 @@ const get = async (url) => {
         return response.data;
     } catch (err) {
         console.log(err);
+        return err;
     }
 };
 
@@ -18,6 +19,7 @@ const post = async (url, data) => {
         return response;
     } catch (err) {
         console.log(err);
+        return err;
     }
 };
 
@@ -27,6 +29,7 @@ const del = async (url, data) => {
         return response;
     } catch (err) {
         console.log(err);
+        return err;
     }
 };
 
@@ -36,6 +39,7 @@ const put = async (url, data) => {
         return response;
     } catch (err) {
         console.log(err);
+        return err;
     }
 };
 

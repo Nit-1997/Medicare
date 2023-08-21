@@ -1,19 +1,29 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 import * as authService from "./auth-service";
 
 export const loginThunk = createAsyncThunk(
     "authentication/login",
     async (credentials) => {
-        const user = await authService.login(credentials);
-        return user;
+        try {
+            const user = await authService.login(credentials);
+            return user;
+        } catch (error) {
+            console.log("Error Occured while logging in");
+            return error;
+        }
     }
 );
 
 export const registerThunk = createAsyncThunk(
     "authentication/signup",
     async (payload) => {
-        const user = await authService.register(payload);
-        return user;
+        try{
+            const user = await authService.register(payload);
+            return user;
+        }catch (error){
+            console.log("Error occured while signup");
+            return error;
+        }
     }
 );
 
