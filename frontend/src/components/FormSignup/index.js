@@ -73,18 +73,13 @@ const FormSignup = (props) => {
                 await dispatch(
                     registerThunk({ email, password, fullname, role })
                 );
-                if (currentUser) {
-                    dispatch(setPage(-2));
-                    navigate("/profile");
-                } else {
-                    messageModalHandleOpen(true);
-                    setMessageModalContent(
-                        "Registration failed, please try a different email!"
-                    );
-                }
+                dispatch(setPage(-2));
+                navigate("/profile");
             } catch (e) {
                 messageModalHandleOpen(true);
-                setMessageModalContent(e.message);
+                setMessageModalContent(
+                    "Registration failed, please try a different email!"
+                );
             }
         }
     };
