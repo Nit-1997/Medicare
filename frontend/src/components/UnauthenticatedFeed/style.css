@@ -1,3 +1,6 @@
 .UnauthenticatedFeed_container {
+    overflow-y: scroll;
+    height: calc(100vh - 70px);
+    box-sizing: border-box;
     padding: 20px 20px 0 20px;
 }
