@@ -5,17 +5,17 @@ import FeedPostUnauthenticated from "../FeedPostUnauthenticated";
 
 const UnauthenticatedFeed = () => {
     const [posts, setposts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const getAllPosts = async () => {
+            setLoading(true);
             const posts = await postApis.getAllUnauthPosts();
             setposts(posts.reverse());
+            setLoading(false);
         };
         if (posts.length === 0) {
             getAllPosts();
-        } else {
-            setLoading(false);
         }
     }, [posts]);
 
