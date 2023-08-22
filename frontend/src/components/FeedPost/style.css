@@ -27,6 +27,10 @@
     font-size: 18px;
 }
 
+.FeedPost_expert_name:hover {
+    cursor: pointer;
+}
+
 .FeedPost_expert_username {
     font-size: 15px;
     margin-left: 5px;
