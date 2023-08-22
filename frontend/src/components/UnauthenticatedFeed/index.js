@@ -5,6 +5,7 @@ import FeedPostUnauthenticated from "../FeedPostUnauthenticated";
 
 const UnauthenticatedFeed = () => {
     const [posts, setposts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getAllPosts = async () => {
@@ -13,15 +14,21 @@ const UnauthenticatedFeed = () => {
         };
         if (posts.length === 0) {
             getAllPosts();
+        } else {
+            setLoading(false);
         }
     }, [posts]);
 
     return (
-        <div className="UnauthenticatedFeed_container">
-            {posts.map((post) => (
-                <FeedPostUnauthenticated key={post._id} post={post} />
-            ))}
-        </div>
+        {
+            loading?
+            <h4 style={{padding: '20px'}}>Loading...</h4>:
+            <div className="UnauthenticatedFeed_container">
+                {posts.map((post) => (
+                    <FeedPostUnauthenticated key={post._id} post={post} />
+                ))}
+            </div>
+        }
     );
 };
 
